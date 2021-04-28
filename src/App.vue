@@ -1,60 +1,44 @@
 <template>
-  <v-app>
-    <v-app-bar
+  <v-app id="inspire">
+    <v-navigation-drawer
+      v-model="drawer"
       app
-      color="primary"
-      dark
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="title">
+            Ajouter une tâche
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-divider></v-divider>
 
-      <v-spacer></v-spacer>
+      <HelloWorld/>
+    
+    </v-navigation-drawer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+    <v-app-bar app>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Todo list app</v-toolbar-title>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
-    </v-main>
+      <toDo/>
+    </v-main> 
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+  import HelloWorld from './components/HelloWorld'
+  import toDo from './components/toDo'
 
-export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-};
+  export default {
+    data: () => ({ drawer: null }),
+    components: {
+      HelloWorld,
+      toDo
+    }
+  }
 </script>
