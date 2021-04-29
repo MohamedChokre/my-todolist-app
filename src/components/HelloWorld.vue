@@ -1,5 +1,4 @@
 <template>
-  <v-card flat>
     <v-form
       ref="form"
       @submit.prevent="submit"
@@ -54,14 +53,14 @@
         <v-spacer></v-spacer>
         <v-btn
           text
+          @click="addTask"
           color="primary"
           type="submit"
         >
-          Enregistrer
+          Ajouter
         </v-btn>
       </v-card-actions>
-    </v-form>
-  </v-card>
+    </v-form>  
 </template>
 
 <style>
@@ -108,7 +107,6 @@
         )
       },
     },
-
     methods: {
       resetForm () {
         this.form = Object.assign({}, this.defaultForm)
@@ -118,6 +116,13 @@
         this.snackbar = true
         this.resetForm()
       },
-    },
+      addTask() {
+        this.$emit("task_added", {
+          title: this.form.first,
+          date: this.form.last,
+          description: this.form.bio
+        })
+      }
+    }
   }
 </script>
