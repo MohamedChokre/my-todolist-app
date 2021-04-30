@@ -24,25 +24,36 @@
       <v-toolbar-title>Todo list app</v-toolbar-title>
     </v-app-bar>
 
-    <v-main>
-      <div v-for="task in taskList" :key="task" id="taskBox">
-          <h2>{{ task.title }}</h2>
-          <p>{{ task.date }}</p>
-          <p>{{ task.description }}</p>
-          <button @click="modifyTaskIndex(taskList.indexOf(task))" type="button" style="background-color:blue" class="taskAction"></button>
-          <button @click="removeTask(taskList.indexOf(task))" type="button" style="background-color:red" class="taskAction"></button>
-          <button @click="task.isDone = !task.isDone" type="button" style="background-color:green; width:75px" class="taskAction">
-            <p v-if="task.isDone == true">Fait</p>
-            <p v-else>Non fait</p>
-          </button>
-      </div> 
-      <toDo @modify_task="modifyTask" v-show="show"/>
-    </v-main> 
+    <v-main id="main">
+      <section>
+        <div v-for="task in taskList" :key="task" id="taskBox">
+            <h2>{{ task.title }}</h2>
+            <p>{{ task.date }}</p>
+            <p>{{ task.description }}</p>
+            <button @click="modifyTaskIndex(taskList.indexOf(task))" type="button" style="background-color:blue" class="taskAction"></button>
+            <button @click="removeTask(taskList.indexOf(task))" type="button" style="background-color:red" class="taskAction"></button>
+            <button @click="task.isDone = !task.isDone" type="button" style="background-color:green; width:75px" class="taskAction">
+              <p v-if="task.isDone == true">Fait</p>
+              <p v-else>Non fait</p>
+            </button>
+        </div> 
+        <toDo @modify_task="modifyTask" v-show="show"/>
+      </section>
+    </v-main>
   
   </v-app>
 </template>
 
 <style>
+  section {
+    position: relative;
+    display: Flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 12px;
+  }
   #taskBox {
     position : relative;
     margin-left: 15px;
