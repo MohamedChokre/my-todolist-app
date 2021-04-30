@@ -114,17 +114,15 @@
         this.modifyIndex = number
       },
       modifyTask(payload) {
-        if(this.taskList[this.modifyIndex].title != payload.title && 
-          this.taskList[this.modifyIndex].title) {
+        if(this.taskList[this.modifyIndex].title != payload.title) {
             this.taskList[this.modifyIndex].title = payload.title
+            alert(this.taskList[this.modifyIndex].title + " " + payload.title)
         }
-        if(this.taskList[this.modifyIndex].date != payload.date && 
-          this.taskList[this.modifyIndex].date) {
+        if(this.taskList[this.modifyIndex].date != payload.date) {
             this.taskList[this.modifyIndex].date = payload.date,
             console.log(payload.date)
         }
-        if(this.taskList[this.modifyIndex].description != payload.description && 
-          this.taskList[this.modifyIndex].description) {
+        if(this.taskList[this.modifyIndex].description != payload.description) {
             this.taskList[this.modifyIndex].description = payload.description
         }
         this.show = false
