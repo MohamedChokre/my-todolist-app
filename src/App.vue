@@ -25,13 +25,16 @@
     </v-app-bar>
 
     <v-main>
-      <div v-for="task in taskList" :key="task" @click="changeColor" id="taskBox"
-        v-bind:style="{ backgroundColor: computedBackgroundColor }">
+      <div v-for="task in taskList" :key="task" id="taskBox">
           <h2>{{ task.title }}</h2>
           <p>{{ task.date }}</p>
           <p>{{ task.description }}</p>
           <button @click="modifyTaskIndex(taskList.indexOf(task))" type="button" style="background-color:blue" class="taskAction"></button>
           <button @click="removeTask(taskList.indexOf(task))" type="button" style="background-color:red" class="taskAction"></button>
+          <button @click="task.isDone = !task.isDone" type="button" style="background-color:green; width:75px" class="taskAction">
+            <p v-if="task.isDone == true">Fait</p>
+            <p v-else>Non fait</p>
+          </button>
       </div> 
       <toDo @modify_task="modifyTask" v-show="show"/>
     </v-main> 
@@ -48,6 +51,7 @@
     height: 200px;
     padding: 10px;
     border-radius: 5px;
+    background-color: #e3e3e3;
     color: white;
   }
   .taskAction {
@@ -72,8 +76,6 @@
         taskList: [],
         modifyIndex: undefined,
         show: false,
-        isDone: false,
-        backgroundColor: '#e3e3e3'
       }
     },
     components: {
@@ -89,6 +91,7 @@
           title: this.title,
           date: this.date,
           description: this.description,
+          isDone: false
         })
       },
       removeTask(position) {
@@ -113,19 +116,6 @@
             this.taskList[this.modifyIndex].description = payload.description
         }
         this.show = false
-      },
-      changeColor() {
-        this.isDone = !this.isDone
-        if(this.isDone) {
-          this.backgroundColor = '#A92000'
-        } else {
-          this.backgroundColor = '#e3e3e3'
-        }
-      }
-    },
-    computed: {
-      computedBackgroundColor() {
-        return this.backgroundColor
       }
     }
   }
