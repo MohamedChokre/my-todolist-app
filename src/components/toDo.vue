@@ -111,7 +111,9 @@
       resetForm () {
         this.form = Object.assign({}, this.defaultForm)
         this.$refs.form.reset()
-        this.$emit("cancel_modification", {})
+        this.$emit("cancel_modification", {
+          show: false
+        })
       },
       submit () {
         this.snackbar = true

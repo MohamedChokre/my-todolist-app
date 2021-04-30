@@ -50,8 +50,9 @@
     display: Flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
     width: 100%;
-    height: 100%;
+    height: auto;
     padding-bottom: 12px;
   }
   #taskBox {
