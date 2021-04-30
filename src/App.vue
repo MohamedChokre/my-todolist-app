@@ -116,7 +116,6 @@
       modifyTask(payload) {
         if(this.taskList[this.modifyIndex].title != payload.title) {
             this.taskList[this.modifyIndex].title = payload.title
-            alert(this.taskList[this.modifyIndex].title + " " + payload.title)
         }
         if(this.taskList[this.modifyIndex].date != payload.date) {
             this.taskList[this.modifyIndex].date = payload.date,
