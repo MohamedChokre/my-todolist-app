@@ -37,7 +37,7 @@
               <p v-else>Non fait</p>
             </button>
         </div> 
-        <toDo @modify_task="modifyTask" v-show="show"/>
+        <toDo @modify_task="modifyTask" @cancel_modification="cancelModificationAction" v-show="show"/>
       </section>
     </v-main>
   
@@ -127,6 +127,9 @@
             this.taskList[this.modifyIndex].description = payload.description
         }
         this.show = false
+      },
+      cancelModificationAction(payload) {
+        this.show = payload.show
       }
     }
   }
